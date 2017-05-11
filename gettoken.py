@@ -12,7 +12,11 @@ def handle(msg):
     print(content_type, chat_type, chat_id)
 
     if content_type == 'text':
-        bot.sendMessage(chat_id, msg['Please dont disturb me right now :('])
+        bot.sendMessage(chat_id, 'Please dont disturb me right now :(')
+    if content_type == 'voice':
+        bot.sendMessage(chat_id, 'Lul i have no ears')
+    if content_type == 'new_chat_member':
+        bot.sendMessage(chat_id, 'Tervetuloa norsunluutorniin, voittajien valinta')
 
 MessageLoop(bot, handle).run_as_thread()
 print ('The bot is on')
@@ -20,14 +24,15 @@ print ('The bot is on')
 # Keep the program running.
 while 1:
     time.sleep(10)
-
+    #bot.sendMessage(-1001059712421L, 'Moi, en ees tullu pakottaa')
+    #response = bot.getUpdates()
+    #pprint(response)
 
 #def handle(msg):
 #    pprint(msg)
 
 #MessageLoop(bot, handle).run_forever()
 
-#response = bot.getUpdates()
-#pprint(response)
+
 
 ##bot.sendMessage(42231217, 'The bot is creepy (:!')

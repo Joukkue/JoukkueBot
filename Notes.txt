@@ -1,0 +1,17 @@
+Stuff the bot gets from a message:
+
+[{u'message': {u'chat': {u'first_name': u'Joonas',
+                         u'id': 124865512,
+                         u'last_name': u'Malinen',
+                         u'type': u'private',
+                         u'username': u'Westblat'},
+               u'date': 1494515452,
+               u'from': {u'first_name': u'Joonas',
+                         u'id': 124865512,
+                         u'last_name': u'Malinen',
+                         u'username': u'Westblat'},
+               u'message_id': 26,
+               u'text': u'Asd'},
+  u'update_id': 76773833}]
+
+JoukkueChat id: -1001059712421L
