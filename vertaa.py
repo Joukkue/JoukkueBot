@@ -25,7 +25,7 @@ class comparing():
                 line = kasa[i:i+4]
                 if line == "tuli":
                     tulemisarvo = True
-                    return True
+                    return tulemisarvo
         else:
             tulemisarvo = False
         return tulemisarvo
@@ -36,10 +36,10 @@ class comparing():
         if len(kasa)>=6:
             for i in range (len(kasa)-5):
                 line = kasa[i:i+6]
-                if line == "tissit" or "715517":
+                if line == "tissit" or line == "715517":
                     tissivakio = True
                     del(self)
-                    return True
+                    return tissivakio
         else:
             tissivakio = False
         del(self)
