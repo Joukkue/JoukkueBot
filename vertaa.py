@@ -25,11 +25,9 @@ class comparing():
                 line = kasa[i:i+4]
                 if line == "tuli":
                     tulemisarvo = True
-                    del(self)
                     return True
         else:
             tulemisarvo = False
-        del(self)
         return tulemisarvo
     
     def is_tissit(self):
