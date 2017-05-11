@@ -14,6 +14,11 @@ def handle(msg):
     if content_type == 'text':
         if msg['text'] == "tuli":
             bot.sendMessage(chat_id, 'spruit')
+            bot.sendSticker(chat_id, 'CAADBAADiwAD634eAmMUu4WqWPVmAg')
+        if msg['text'] == "tissit":
+            bot.sendPhoto(chat_id, 'AgADBAADNKoxGztVqFByX5YFloA7wrFSvRkABBj0S0vREoDK--0AAgI')
+        if msg['text'] == "/moi":
+            bot.sendMessage(chat_id, "moi")
     if content_type == 'voice':
         bot.sendMessage(chat_id, 'Lul i have no ears')
     if content_type == 'new_chat_member':
@@ -21,13 +26,13 @@ def handle(msg):
 
 MessageLoop(bot, handle).run_as_thread()
 print ('The bot is on')
-
+#response = bot.getUpdates()
+#pprint(response)
 # Keep the program running.
 while 1:
     time.sleep(10)
     #bot.sendMessage(-1001059712421L, 'Moi, en ees tullu pakottaa')
-    #response = bot.getUpdates()
-    #pprint(response)
+
 
 #def handle(msg):
 #    pprint(msg)
