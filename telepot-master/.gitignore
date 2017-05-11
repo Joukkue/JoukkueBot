@@ -1,0 +1,7 @@
+*.pyc
+telepot.egg-info/
+dist/
+.idea/
+checklist.txt
+.remote-sync.json
+.pypirc
