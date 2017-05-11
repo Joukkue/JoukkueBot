@@ -12,7 +12,8 @@ def handle(msg):
     print(content_type, chat_type, chat_id)
 
     if content_type == 'text':
-        bot.sendMessage(chat_id, 'Please dont disturb me right now :(')
+        if msg['text'] == "tuli":
+            bot.sendMessage(chat_id, 'spruit')
     if content_type == 'voice':
         bot.sendMessage(chat_id, 'Lul i have no ears')
     if content_type == 'new_chat_member':
