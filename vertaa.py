@@ -22,9 +22,7 @@ class comparing():
         kasa = self.line.lower()
         if len(kasa)>=4:
             for i in range (len(kasa)-3):
-                print(i)
                 line = kasa[i:i+4]
-                print(line)
                 if line == "tuli":
                     tulemisarvo = True
                     del(self)
@@ -33,4 +31,18 @@ class comparing():
             tulemisarvo = False
         del(self)
         return tulemisarvo
-        
+    
+    def is_tissit(self):
+        tissivakio = False
+        kasa = self.line.lower()
+        if len(kasa)>=6:
+            for i in range (len(kasa)-5):
+                line = kasa[i:i+6]
+                if line == "tissit" or "715517":
+                    tissivakio = True
+                    del(self)
+                    return True
+        else:
+            tissivakio = False
+        del(self)
+        return tissivakio
