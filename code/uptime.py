@@ -1,11 +1,11 @@
 import time
-from botRun import bot
 
 ##TODO: Miksi funktio ei toimi tässä filussa??
+##FIXI: Lisäsin botin funktiolle parametriksi
 
 start_time = time.time()
 
-def upTime(chat_id):
+def upTime(chat_id, bot):
     running_time_seconds = time.time() - start_time
     running_time_minutes = running_time_seconds / 60
     if running_time_seconds < 1000: #TODO: Päätä paremmat luvut
