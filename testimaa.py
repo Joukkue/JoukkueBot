@@ -1,6 +1,6 @@
 
 
-from vertaa import *
+from code.compare import *
 
 value = comparing("tis it")
 
