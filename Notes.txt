@@ -15,3 +15,4 @@ Stuff the bot gets from a message:
   u'update_id': 76773833}]
 
 JoukkueChat id: -1001059712421L
+spruit id: CAADBAADiwAD634eAmMUu4WqWPVmAg
