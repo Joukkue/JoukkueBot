@@ -16,3 +16,10 @@ Stuff the bot gets from a message:
 
 JoukkueChat id: -1001059712421L
 spruit id: CAADBAADiwAD634eAmMUu4WqWPVmAg
+
+[{u'message': {u'reply_to_message': {u'from': {u'username': u'JoonasLehto', u'first_name': u'Joonas', u'last_name': u'Lehto', u'id': 252163618},
+u'text': u'/pol result', u'entities': [{u'length': 4, u'type': u'bot_command', u'offset': 0}], u'chat': {u'all_members_are_administrators': False, u'type': u'group', u'id': -184405992, u'title': u'Bot testground'}, u'date': 1494971707, u'message_id': 322}, u'text': u'moi', u'chat': {u'all_members_are_administrators': False, u'type': u'group', u'id': -184405992, u'title': u'Bot testground'}, u'date': 1495108676,
+u'from': {u'username': u'Westblat', u'first_name': u'Joonas', u'last_name': u'Malinen', u'id': 124865512, u'language_code': u'fi'},
+u'message_id': 329},
+u'update_id': 123105652}]
+The bot is on
