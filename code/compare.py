@@ -12,10 +12,10 @@ class comparing():
         for i in range (len(line)):
             if line[i] != " ":
                 a.append(line[i])
-        kasa = ""
+        stack = ""
         for i in range (len(a)):
-            kasa+=a[i]
-        self.line = kasa
+            stack+=a[i]
+        self.line = stack
         
     def is_tuli(self):
         tulemisarvo = False
@@ -32,10 +32,10 @@ class comparing():
     
     def is_tissit(self):
         tissivakio = False
-        kasa = self.line.lower()
-        if len(kasa)>=6:
-            for i in range (len(kasa)-5):
-                line = kasa[i:i+6]
+        stack = self.line.lower()
+        if len(stack)>=6:
+            for i in range (len(stack)-5):
+                line = stack[i:i+6]
                 if line == "tissit" or line == "715517":
                     tissivakio = True
                     del(self)
