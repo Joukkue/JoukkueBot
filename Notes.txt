@@ -16,3 +16,98 @@ Stuff the bot gets from a message:
 
 JoukkueChat id: -1001059712421L
 spruit id: CAADBAADiwAD634eAmMUu4WqWPVmAg
+
+
+<h1 id="training-header">Tulevat harjoitukset</h1>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Päivä</th>
+      <th>Aika</th>
+      <th>Ryhmä</th>
+      <th>Paikka</th>
+      <th>Ohjaaja</th>
+    </tr>
+  <tbody>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>17:15 - 18:00</td>
+      <td>4–6-vuotiaat</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>18:00 - 18:45</td>
+      <td> 7–11-vuotiaat (valkea)</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>18:45 - 19:30</td>
+      <td>7–11-vuotiaat (värivyöt)</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>19:30 - 20:45</td>
+      <td>Poomsae</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Johanna
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>la 20.5.</td>
+      <td>11:15 - 12:15</td>
+      <td>Naisten ryhmä / Ladies&#39; group 12+</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Sirpa
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>su 21.5.</td>
+      <td>14:30 - 15:30</td>
+      <td>Poomsae</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Johanna
+
+
+      </td>
+    </tr>
+
+  </tbody>
+  </thead>
+</table>
