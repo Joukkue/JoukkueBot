@@ -1,18 +1,120 @@
-Stuff the bot gets from a message:
-
-[{u'message': {u'chat': {u'first_name': u'Joonas',
-                         u'id': 124865512,
-                         u'last_name': u'Malinen',
-                         u'type': u'private',
-                         u'username': u'Westblat'},
-               u'date': 1494515452,
-               u'from': {u'first_name': u'Joonas',
-                         u'id': 124865512,
-                         u'last_name': u'Malinen',
-                         u'username': u'Westblat'},
-               u'message_id': 26,
-               u'text': u'Asd'},
-  u'update_id': 76773833}]
-
-JoukkueChat id: -1001059712421L
-spruit id: CAADBAADiwAD634eAmMUu4WqWPVmAg
+Stuff the bot gets from a message:
+
+[{u'message': {u'chat': {u'first_name': u'Joonas',
+                         u'id': 124865512,
+                         u'last_name': u'Malinen',
+                         u'type': u'private',
+                         u'username': u'Westblat'},
+               u'date': 1494515452,
+               u'from': {u'first_name': u'Joonas',
+                         u'id': 124865512,
+                         u'last_name': u'Malinen',
+                         u'username': u'Westblat'},
+               u'message_id': 26,
+               u'text': u'Asd'},
+  u'update_id': 76773833}]
+
+JoukkueChat id: -1001059712421L
+spruit id: CAADBAADiwAD634eAmMUu4WqWPVmAg
+
+[{u'message': {u'reply_to_message': {u'from': {u'username': u'JoonasLehto', u'first_name': u'Joonas', u'last_name': u'Lehto', u'id': 252163618},
+u'text': u'/pol result', u'entities': [{u'length': 4, u'type': u'bot_command', u'offset': 0}], u'chat': {u'all_members_are_administrators': False, u'type': u'group', u'id': -184405992, u'title': u'Bot testground'}, u'date': 1494971707, u'message_id': 322}, u'text': u'moi', u'chat': {u'all_members_are_administrators': False, u'type': u'group', u'id': -184405992, u'title': u'Bot testground'}, u'date': 1495108676,
+u'from': {u'username': u'Westblat', u'first_name': u'Joonas', u'last_name': u'Malinen', u'id': 124865512, u'language_code': u'fi'},
+u'message_id': 329},
+u'update_id': 123105652}]
+The bot is on
+<h1 id="training-header">Tulevat harjoitukset</h1>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Päivä</th>
+      <th>Aika</th>
+      <th>Ryhmä</th>
+      <th>Paikka</th>
+      <th>Ohjaaja</th>
+    </tr>
+  <tbody>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>17:15 - 18:00</td>
+      <td>4–6-vuotiaat</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>18:00 - 18:45</td>
+      <td> 7–11-vuotiaat (valkea)</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>18:45 - 19:30</td>
+      <td>7–11-vuotiaat (värivyöt)</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Simo ja Eevi
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>to 18.5.</td>
+      <td>19:30 - 20:45</td>
+      <td>Poomsae</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Johanna
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>la 20.5.</td>
+      <td>11:15 - 12:15</td>
+      <td>Naisten ryhmä / Ladies&#39; group 12+</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Sirpa
+
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>su 21.5.</td>
+      <td>14:30 - 15:30</td>
+      <td>Poomsae</td>
+      <td>Papinniitty</td>
+      <td>
+
+        Johanna
+
+
+      </td>
+    </tr>
+
+  </tbody>
+  </thead>
+</table>
+
+
