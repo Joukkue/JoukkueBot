@@ -1,1 +1,1 @@
-python botRun.bat
+python botRun.py
