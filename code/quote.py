@@ -2,8 +2,8 @@ from __future__ import print_function
 
 counter = -1
 
-def fileLength():
-    stack = open("quotes.txt", "r")
+def fileLength(file):
+    stack = open(file, "r")
     global  counter
     line = "lel"
     while line!="":
