@@ -1,5 +1,4 @@
 #!/bin/bash
-chmod +x file
 echo "Starting the setup"
 pip install telepot
 pip install bs4

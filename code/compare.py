@@ -28,7 +28,14 @@ class comparing():
             totuus = self.double(5, "tissi", "71551")
         del(self)
         return totuus
-    
+
+    def is_kalja(self):
+        totuus = self.double(5, "kalja", "kalia")
+        if totuus != True:
+            totuus = self.double(4, "olut", "beer")
+        del(self)
+        return totuus
+
     def double(self, n, key1, key2):
         stack = self.line.lower()
         if len(stack)>=n:
