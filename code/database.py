@@ -12,6 +12,7 @@ def createTable():
     connection.close()
 
 def addToDataBase(bot, msg):
+    print("/addquote was calld")
 
     chat_id = msg['chat']['id']
 
@@ -32,6 +33,7 @@ def addToDataBase(bot, msg):
     #c.execute("INSERT INTO quotes(username) VALUES (?)",r)
 
 def findQuote(bot,msg):
+    print("/findquote was calld")
 
     chat_id = msg['chat']['id']
 

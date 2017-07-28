@@ -1,6 +1,7 @@
 #coding: utf-8
 
 def help(bot, msg):
+    print("/help was calld")
 
     chat_id = msg['chat']['id']
 
