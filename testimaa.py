@@ -1,8 +1,1 @@
-
-
-from code.compare import *
-
-value = comparing("tis it")
-
-print(value.is_tuli())
-print(value.is_tissit())
+from datetime import datetimetime = datetime.now()my_time_string = "00:00:00"my_datetime = datetime.strptime(my_time_string, "%H:%M:%S")print my_datetimemy_datetime = time.replace(hour=my_datetime.time().hour, minute=my_datetime.time().minute, second=my_datetime.time().second, microsecond=0)print timeprint my_datetimeif (time > my_datetime):    print "Hello"

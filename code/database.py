@@ -20,7 +20,7 @@ def addToDataBase(bot, msg):
         find = msg['text'].split(" ")[1]
         quote = msg['reply_to_message']['text']
         try:
-            username = msg['reply_to_message']['from']['username']
+            username = "@" + msg['reply_to_message']['from']['username']
         except:
             username = msg['reply_to_message']['from']['first_name']
         try:
@@ -50,7 +50,7 @@ def findQuote(bot,msg):
             c = connection.cursor()
             c.execute("SELECT * FROM quotes WHERE find =?", t)
             found = c.fetchone()
-            bot.sendMessage(chat_id, found[1] + "\n-@" + found[2])
+            bot.sendMessage(chat_id, found[1] + "\n" + found[2])
             connection.close()
         except:
             bot.sendMessage(chat_id, "No such quote found")
