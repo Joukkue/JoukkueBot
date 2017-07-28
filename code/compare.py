@@ -1,6 +1,7 @@
+#coding: utf-8
 
 
-class comparing():
+class Comparing():
     def __init__(self, line):
         self.removewhitespace(line)
         
@@ -18,29 +19,28 @@ class comparing():
         self.line = stack
         
     def is_tuli(self):
-        tulemisarvo = False
-        kasa = self.line.lower()
-        if len(kasa)>=4:
-            for i in range (len(kasa)-3):
-                line = kasa[i:i+4]
-                if line == "tuli":
-                    tulemisarvo = True
-                    return tulemisarvo
-        else:
-            tulemisarvo = False
-        return tulemisarvo
+        totuus = self.double(4,"tuli", "tule")
+        return totuus
     
     def is_tissit(self):
-        tissivakio = False
-        stack = self.line.lower()
-        if len(stack)>=6:
-            for i in range (len(stack)-5):
-                line = stack[i:i+6]
-                if line == "tissit" or line == "715517":
-                    tissivakio = True
-                    del(self)
-                    return tissivakio
-        else:
-            tissivakio = False
+        totuus = self.double(6,"tissit", "715517")
+        if totuus != True:
+            totuus = self.double(5, "tissi", "71551")
         del(self)
-        return tissivakio
+        return totuus
+
+    def is_kalja(self):
+        totuus = self.double(5, "kalja", "kalia")
+        if totuus != True:
+            totuus = self.double(4, "olut", "beer")
+        del(self)
+        return totuus
+
+    def double(self, n, key1, key2):
+        stack = self.line.lower()
+        if len(stack)>=n:
+            for i in range (len(stack)-n+1):
+                line = stack[i:i+n]
+                if line == key1 or line == key2:
+                    return True
+        return False
