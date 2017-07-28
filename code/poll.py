@@ -2,8 +2,9 @@
 votes = [0,0]
 	
 def poll(bot, msg):
-    
+
 	chat_id = msg['chat']['id']
+	print("/help was calld")
 
 	global votes
 	try:

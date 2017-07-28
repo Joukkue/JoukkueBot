@@ -6,6 +6,7 @@ except ImportError:
 from bs4 import BeautifulSoup
 
 def treenit(bot, msg):
+    print("/treenit was calld")
 
     chat_id = msg['chat']['id']
 
