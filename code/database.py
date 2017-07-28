@@ -19,7 +19,10 @@ def addToDataBase(bot, msg):
         c = connection.cursor()
         find = msg['text'].split(" ")[1]
         quote = msg['reply_to_message']['text']
-        username = msg['reply_to_message']['from']['username']
+        try:
+            username = msg['reply_to_message']['from']['username']
+        except:
+            username = msg['reply_to_message']['from']['first_name']
         try:
             c.execute("INSERT INTO quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
             connection.commit()
