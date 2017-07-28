@@ -5,7 +5,10 @@ except ImportError:
     from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-def treenit(chat_id, bot):
+def treenit(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     counter = 0
     text = ""
     html = urlopen('http://hwarang.net/').read()

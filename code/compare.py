@@ -1,7 +1,7 @@
 #coding: utf-8
 
 
-class comparing():
+class Comparing():
     def __init__(self, line):
         self.removewhitespace(line)
         

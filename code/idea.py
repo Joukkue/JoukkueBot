@@ -1,6 +1,9 @@
 from __future__ import print_function
 
-def addIdea(chat_id, bot, msg):
+def addIdea(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     ideaFile = open('ideas.txt', 'a')
     temp = msg['text'].split(" ",1)[1]
     try:
@@ -11,7 +14,10 @@ def addIdea(chat_id, bot, msg):
 
         ideaFile.close()
 
-def listIdeas(chat_id, bot):
+def listIdeas(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     ideaFile = open("ideas.txt", 'r')
     text = ""
     try:
