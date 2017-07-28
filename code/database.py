@@ -11,7 +11,10 @@ def createTable():
     connection.commit()
     connection.close()
 
-def addToDataBase(msg, bot, chat_id):
+def addToDataBase(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     try:
         connection = sqlite3.connect('quotes.db', check_same_thread=False)
         c = connection.cursor()
@@ -28,7 +31,10 @@ def addToDataBase(msg, bot, chat_id):
     #c.execute("INSERT INTO quotes(quote) VALUES (?)",s)
     #c.execute("INSERT INTO quotes(username) VALUES (?)",r)
 
-def findQuote(msg, chat_id, bot):
+def findQuote(bot,msg):
+
+    chat_id = msg['chat']['id']
+
     try:
         connection = sqlite3.connect('quotes.db', check_same_thread=False)
         t = (msg['text'].split(" ")[1], )

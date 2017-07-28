@@ -1,11 +1,17 @@
 #coding: utf-8
-import urllib2
+try:
+    from urllib2 import urlopen
+except ImportError:
+    from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-def treenit(chat_id, bot):
+def treenit(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     counter = 0
     text = ""
-    html = urllib2.urlopen('http://hwarang.net/').read()
+    html = urlopen('http://hwarang.net/').read()
     soup = BeautifulSoup(html, "lxml")
     soup.prettify()
 
@@ -37,7 +43,7 @@ def main():
 
   #url = raw_input('Web-Address: ')
   counter = 0
-  html = urllib2.urlopen('http://hwarang.net/').read()
+  html = urlopen('http://hwarang.net/').read()
   soup = BeautifulSoup(html, "lxml")
   soup.prettify()
   text = ""
@@ -68,7 +74,7 @@ def main():
           text += " "
         #text += td.string.rstrip()
 
-  print text
+  print(text)
 
 
 

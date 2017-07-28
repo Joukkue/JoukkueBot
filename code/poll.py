@@ -1,7 +1,10 @@
 	
 votes = [0,0]
 	
-def poll(msg, chat_id, bot):
+def poll(bot, msg):
+    
+	chat_id = msg['chat']['id']
+
 	global votes
 	try:
 		temp = msg['text'].split(" ")[1]

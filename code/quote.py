@@ -12,7 +12,10 @@ def fileLength(file):
         counter += 1
     stack.close()
 
-def addquote(chat_id, bot, msg):
+def addquote(bot, msg):
+
+    chat_id = msg['chat']['id']
+
     global counter
     quoteFile = open('quotes.txt', 'a')
     try:
@@ -25,7 +28,9 @@ def addquote(chat_id, bot, msg):
 
     quoteFile.close()
 
-def readquote(chat_id, bot, msg):
+def readquote(bot, msg):
+
+    chat_id = msg['chat']['id']
 
     quoteFile = open("quotes.txt", 'r')
 
