@@ -27,11 +27,16 @@ def treenit(bot, msg):
       tr_tags = table.find_all('tr')
 
       for tr in tr_tags:
+        
         td_tags = tr.find_all('td')
-
+        
         for td in td_tags:
+          
+          if td.string == None:
+            break
 
           text += " ".join(td.string.split())
+          
           counter += 1
           if counter == 5:
             text += "\n"
@@ -39,6 +44,8 @@ def treenit(bot, msg):
           else: text += " "
           #bot.sendMessage(chat_id, text)
     bot.sendMessage(chat_id,text)
+
+
 def main():
   #Connect2Web()
 
@@ -51,7 +58,7 @@ def main():
 
   # extract all the tables in the HTML
   tables = soup.find_all('table')
-
+  
   # get the class name for each
   for table in tables:
     class_name = table['class']
@@ -78,7 +85,6 @@ def main():
   print(text)
 
 
-
-
 if __name__ == '__main__':
     main()
+	
