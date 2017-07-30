@@ -1,8 +1,11 @@
 #coding: utf-8
+import os
 import sqlite3
 
+db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'joukkue.db')
+
 def createTable():
-    connection = sqlite3.connect('joukkue.db', check_same_thread=False)
+    connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS quotes
             (find text, quote text, username text)''')
@@ -15,7 +18,7 @@ def addToDataBase(bot, msg):
     chat_id = msg['chat']['id']
 
     try:
-        connection = sqlite3.connect('joukkue.db', check_same_thread=False)
+        connection = sqlite3.connect(db_dir, check_same_thread=False)
         c = connection.cursor()
         find = msg['text'].split(" ")[1]
         quote = msg['reply_to_message']['text']
@@ -41,7 +44,7 @@ def findQuote(bot,msg):
     chat_id = msg['chat']['id']
 
     try:
-        connection = sqlite3.connect('joukkue.db', check_same_thread=False)
+        connection = sqlite3.connect(db_dir, check_same_thread=False)
         t = (msg['text'].split(" ")[1], )
         try:
             c = connection.cursor()
@@ -61,7 +64,7 @@ def listQuotes(bot, msg):
 
     chat_id = msg['chat']['id']
     try:
-        connection = sqlite3.connect('joukkue.db', check_same_thread=False)
+        connection = sqlite3.connect("/storage/emulated/0/qpython/projects/JoukkueBot-master/joukkue.db", check_same_thread=False)
         c = connection.cursor()
         text = ""
         for row in c.execute('SELECT find FROM quotes'):
