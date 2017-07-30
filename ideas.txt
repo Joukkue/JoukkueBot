@@ -1,1 +1,2 @@
 /listIdeas
+komennot pienellä
