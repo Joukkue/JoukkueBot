@@ -1,33 +1,52 @@
-	
-votes = [0,0]
+from os import path
+
+poll_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'polls.txt')
 	
 def poll(bot, msg):
 
 	chat_id = msg['chat']['id']
-	print("/help was calld")
-
-	global votes
+	
 	try:
-		temp = msg['text'].split(" ")[1]
-		if temp == "new":
-			votes = [0,0]
-			bot.sendMessage(chat_id, 'New poll')
-		elif temp == "yes":
-			votes[1] += 1
-			bot.sendMessage(chat_id, '+1')
-		elif temp == "no":
-			votes[0] += 1
-			bot.sendMessage(chat_id, '-1')
-		elif temp == "result":
-			if votes[0] < votes[1]:
-				bot.sendMessage(chat_id, 'Voitit pelin')
-			elif votes[0] > votes[1]:
-				bot.sendMessage(chat_id, 'Havisit pelin')
-			else:
-				bot.sendMessage(chat_id, 'Tasapeli')
-			tot = votes[0] + votes[1]
-			bot.sendMessage(chat_id, "Total votes {}".format(tot))
-		else:
-			bot.sendMessage(chat_id, '/pol [new, yes, no, result]')
+		poll_file = open(poll_dir, 'a')
+	except OSError:
+		bot.sendMessage("Couldn't access polls data")
+		
+	print(identify(msg))
+	
+	try:
+		pass
+		#TODO Create interpreter for user input
 	except:
-		bot.sendMessage(chat_id, '/pol [new, y, n, result]')
+		pass
+	finally:
+		poll_file.close()
+		
+		
+#TODO
+"""
+Add following funktions
+ - new_poll
+ - remove_poll
+ - vote
+ - show_polls
+ - show_poll
+"""
+		
+#Returns list of sender: id, first name, last name, username
+#Missing parts are replaced with empty string
+def identify(msg):
+	sender = msg['from']
+	
+	identity = []
+	information = ['id', 'first_name', 'last_name', 'username']
+	
+	for i in information:
+		try:
+			identity.append(sender[i])
+		except KeyError:
+			identity.append("")
+	
+	return identity
+
+
+
