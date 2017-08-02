@@ -1,52 +1,84 @@
-from __future__ import print_function
+#coding: utf-8
+import os
+import sqlite3
 
-counter = -1
+db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'joukkue.db')
 
-def fileLength(file):
-    stack = open(file, "r")
-    global  counter
-    line = "lel"
-    while line!="":
-        line = stack.readline()
-        line = line.rstrip()
-        counter += 1
-    stack.close()
+def main():
+	initializeTable()
 
-def addquote(bot, msg):
+
+def addToDataBase(bot, msg):
+    print("/addquote was calld")
 
     chat_id = msg['chat']['id']
 
-    global counter
-    quoteFile = open('quotes.txt', 'a')
     try:
-        print(msg['text'].split(" ")[1] + ";<;"+ msg['reply_to_message']['from']['username'] +";<;"+ msg['reply_to_message']['text'] , file = quoteFile)
-        #TODO: No telegran nick == no quote, should be fixed
-        bot.sendMessage(chat_id, "Quote added")
-        counter += 1
+        connection = sqlite3.connect(db_dir, check_same_thread=False)
+        c = connection.cursor()
+        find = msg['text'].split(" ")[1]
+        quote = msg['reply_to_message']['text']
+        username = msg['reply_to_message']['from']['username']
+        try:
+            c.execute("INSERT INTO quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
+            connection.commit()
+            connection.close()
+            bot.sendMessage(chat_id, "Quote added succesfully")
+        except:
+            bot.sendMessage(chat_id, "Quote with the tag " + find + " already exists")
+            connection.commit()
+            connection.close()
+
+
     except:
-        bot.sendMessage(chat_id, "Error adding quote")
+        bot.sendMessage(chat_id, "Error adding quote. Please make sure you replied to a message and added a tag for quote")
+        connection.close()
 
-    quoteFile.close()
-
-def readquote(bot, msg):
+def findQuote(bot,msg):
+    print("/findquote was calld")
 
     chat_id = msg['chat']['id']
 
-    quoteFile = open("quotes.txt", 'r')
-
     try:
-        temp = msg['text'].split(" ")[1]
-
-        for i in range(counter):
-            text = quoteFile.readline()
-            #text = text.rstrip()
-            check = text.split(";<;")[0]
-            who = text.split(";<;")[1]
-            quote = text.split(";<;")[2] #TODO: Miten oikeesti menee?
-            if check == temp:
-                bot.sendMessage(chat_id, quote + "by @" + who)
-
+        connection = sqlite3.connect(db_dir, check_same_thread=False)
+        t = (msg['text'].split(" ")[1], )
+        try:
+            c = connection.cursor()
+            c.execute("SELECT * FROM quotes WHERE find =?", t)
+            found = c.fetchone()
+            bot.sendMessage(chat_id, found[1] + "\n-@" + found[2])
+            connection.close()
+        except:
+            bot.sendMessage(chat_id, "No such quote found")
+            connection.close()
     except:
-        bot.sendMessage(chat_id, "No such message")
+        bot.sendMessage(chat_id, "Please add a quote to search for")
+        connection.close()
 
-    quoteFile.close()
+def listQuotes(bot, msg):
+    print("/listquotes was calld")
+
+    chat_id = msg['chat']['id']
+    try:
+        connection = sqlite3.connect(db_dir, check_same_thread=False)
+        c = connection.cursor()
+        text = ""
+        for row in c.execute('SELECT find FROM quotes'):
+            text += row[0]
+            text += "\n"
+        bot.sendMessage(chat_id, text)
+    except:
+        bot.sendMessage(chat_id, "Error listing quotes")
+
+#Initializes required table to joukkue.db if not found
+def initializeTable():
+    connection = sqlite3.connect(db_dir, check_same_thread=False)
+    c = connection.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS quotes
+            (find text, quote text, username text)''')
+    connection.commit()
+    connection.close()
+	
+
+main()
+
