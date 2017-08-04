@@ -1,10 +1,14 @@
 from __future__ import print_function
+from os import path
+
+
+ideas_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'ideas.txt')
 
 def addIdea(bot, msg):
 
     chat_id = msg['chat']['id']
 
-    ideaFile = open('ideas.txt', 'a')
+    ideaFile = open(ideas_dir, 'a')
     
     try:
         temp = msg['text'].split(" ",1)[1]
@@ -23,7 +27,7 @@ def listIdeas(bot, msg):
 
     text = ""
     try:
-        ideaFile = open("ideas.txt", 'r')
+        ideaFile = open(ideas_dir, 'r')
         
         for line in ideaFile:
             text += line
