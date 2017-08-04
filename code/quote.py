@@ -20,7 +20,7 @@ def addToDataBase(bot, msg):
         quote = msg['reply_to_message']['text']
         username = msg['reply_to_message']['from']['username']
         try:
-            c.execute("INSERT INTO quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
+            c.execute("INSERT INTO Quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
             connection.commit()
             connection.close()
             bot.sendMessage(chat_id, "Quote added succesfully")
@@ -44,7 +44,7 @@ def findQuote(bot,msg):
         t = (msg['text'].split(" ")[1], )
         try:
             c = connection.cursor()
-            c.execute("SELECT * FROM quotes WHERE find =?", t)
+            c.execute("SELECT * FROM Quotes WHERE find =?", t)
             found = c.fetchone()
             bot.sendMessage(chat_id, found[1] + "\n-@" + found[2])
             connection.close()

@@ -7,7 +7,7 @@ def main():
 	initializeDatabase()
 
 
-def poll(bot, msg):
+def pollMain(bot, msg):
 	chat_id = msg['chat']['id']
 	print("/poll called")
 	print(msg['text'].lstrip("/pol "))
@@ -35,12 +35,13 @@ Add following funktions
  - /pol new; name; desc; (endTime)
 '''
 
-def createPoll():
+def createPoll(name, desc, endTime=None, **kwargs):
 	
 	
 	try:
 		connection = sqlite3.connect(db_dir, check_same_thread=False)
 		c = connectio.cursor()
+		
 	except:
 		pass
 	finally:
