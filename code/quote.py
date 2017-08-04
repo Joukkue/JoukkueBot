@@ -63,7 +63,7 @@ def listQuotes(bot, msg):
         connection = sqlite3.connect(db_dir, check_same_thread=False)
         c = connection.cursor()
         text = ""
-        for row in c.execute('SELECT find FROM quotes'):
+        for row in c.execute('SELECT find FROM Quotes'):
             text += row[0]
             text += "\n"
         bot.sendMessage(chat_id, text)
@@ -74,7 +74,7 @@ def listQuotes(bot, msg):
 def initializeTable():
     connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS quotes
+    c.execute('''CREATE TABLE IF NOT EXISTS Quotes
             (find text, quote text, username text)''')
     connection.commit()
     connection.close()
