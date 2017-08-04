@@ -1,7 +1,7 @@
 from os import path
 import sqlite3
 
-db_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'joukkue.db')
+db_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'resources\joukkue.db')
 
 def main():
 	initializeDatabase()
@@ -76,6 +76,7 @@ def initializeDatabase():
 			name TEXT NOT NULL, 
 			description TEXT NOT NULL,
 			endTime INT,
+			active INT DEFAULT 1,
 			PRIMARY KEY(name)
 		)''')
 	c.execute('''
