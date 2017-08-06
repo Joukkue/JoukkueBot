@@ -2,7 +2,7 @@
 import os
 import sqlite3
 
-db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'resources\joukkue.db')
+db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'joukkue.db')
 
 
 def main():
