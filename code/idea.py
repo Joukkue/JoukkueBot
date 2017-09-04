@@ -2,7 +2,7 @@ from __future__ import print_function
 from os import path
 
 
-ideas_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'ideas.txt')
+ideas_dir = path.join(path.dirname(path.dirname(path.abspath(__file__))), 'resources\ideas.txt')
 
 def addIdea(bot, msg):
 
