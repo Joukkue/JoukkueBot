@@ -36,13 +36,10 @@ def treenit(bot, msg):
             break
 
           text += " ".join(td.string.split())
-          
-          counter += 1
-          if counter == 5:
-            text += "\n"
-            counter = 0
-          else: text += " "
+          text += " "
+        text += "\n"
           #bot.sendMessage(chat_id, text)
+    print("Sent message: \n" + text)
     bot.sendMessage(chat_id,text)
 
 

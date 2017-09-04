@@ -24,14 +24,17 @@ def addToDataBase(bot, msg):
             c.execute("INSERT INTO Quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
             connection.commit()
             connection.close()
+            print("Sent message: \n" + "Quote added succesfully")
             bot.sendMessage(chat_id, "Quote added succesfully")
         except:
+            print("Sent message: \n" +  "Quote with the tag " + find + " already exists")
             bot.sendMessage(chat_id, "Quote with the tag " + find + " already exists")
             connection.commit()
             connection.close()
 
 
     except:
+        print("Sent message: \n" + "Error adding quote. Please make sure you replied to a message and added a tag for quote")
         bot.sendMessage(chat_id, "Error adding quote. Please make sure you replied to a message and added a tag for quote")
         connection.close()
 
@@ -47,12 +50,15 @@ def findQuote(bot,msg):
             c = connection.cursor()
             c.execute("SELECT * FROM Quotes WHERE find =?", t)
             found = c.fetchone()
+            print("Sent message: \n" +  found[1] + "\n-@" + found[2])
             bot.sendMessage(chat_id, found[1] + "\n-@" + found[2])
             connection.close()
         except:
+            print("Sent message: \n" + "No such quote found")
             bot.sendMessage(chat_id, "No such quote found")
             connection.close()
     except:
+        print("Sent message: \n" + "Please add a quote to search for")
         bot.sendMessage(chat_id, "Please add a quote to search for")
         connection.close()
 
@@ -67,8 +73,10 @@ def listQuotes(bot, msg):
         for row in c.execute('SELECT find FROM Quotes'):
             text += row[0]
             text += "\n"
+        print("Sent message: \n" + text)
         bot.sendMessage(chat_id, text)
     except:
+        print("Sent message: \n" + "Error listing quotes")
         bot.sendMessage(chat_id, "Error listing quotes")
 
 #Initializes required table to joukkue.db if not found
