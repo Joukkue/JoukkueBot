@@ -36,13 +36,10 @@ def getLevels(bot, msg):
     chat = msg['chat']['id']
     c.execute("SELECT user, level, experience FROM Levels WHERE chat=? ORDER BY level DESC, experience DESC " , (chat,) )
     users = c.fetchall()
-    message = "Current status of the levels are:\n" \
-              "User, level, experience\n"
+    message = "User, level, experience\n" \
+              "----------------------------\n"
     for i in users:
-        message+= i[0] + " "
-        message += str(i[1]) + " "
-        message += str(i[2])
-        message += "\n"
+        message += "{:s} {:5d} {:7d}\n".format(i[0], i[1],i[2])
 
     bot.sendMessage(chat, message)
 
