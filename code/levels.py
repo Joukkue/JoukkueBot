@@ -34,12 +34,12 @@ def getLevels(bot, msg):
     connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()
     chat = msg['chat']['id']
-    c.execute("SELECT user, level, experience FROM Levels WHERE chat=? ORDER BY level DESC, experience DESC " , (chat,) )
+    c.execute("SELECT level, experience, user FROM Levels WHERE chat=? ORDER BY level DESC, experience DESC " , (chat,) )
     users = c.fetchall()
-    message = "User, level, experience\n" \
+    message = "Level, experience, user\n" \
               "----------------------------\n"
     for i in users:
-        message += "{:10s} {:5d} {:7d}\n".format(i[0], i[1],i[2])
+        message += " {:5d} {:7d}    {:s}\n".format(i[0], i[1],i[2])
 
     print("Message sent: \n"
           + message)
