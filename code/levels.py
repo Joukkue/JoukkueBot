@@ -39,7 +39,7 @@ def getLevels(bot, msg):
     message = "User, level, experience\n" \
               "----------------------------\n"
     for i in users:
-        message += "{:s} {:5d} {:7d}\n".format(i[0], i[1],i[2])
+        message += "{:10s} {:5d} {:7d}\n".format(i[0], i[1],i[2])
 
     print("Message sent: \n"
           + message)
