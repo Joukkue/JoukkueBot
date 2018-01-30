@@ -30,21 +30,38 @@ def gainExperience(bot, msg):
         connection.close()
 
 def getLevels(bot, msg):
+    print("getLevels called")
+    connection = sqlite3.connect(db_dir, check_same_thread=False)
+    c = connection.cursor()
+    chat = msg['chat']['id']
+    c.execute("SELECT user, level, experience FROM Levels WHERE chat=? ORDER BY level DESC, experience DESC " , (chat,) )
+    users = c.fetchall()
+    message = "User, level, experience\n" \
+              "----------------------------\n"
+    for i in users:
+        message += "{:s} {:5d} {:7d}\n".format(i[0], i[1],i[2])
+
+    print("Message sent: \n"
+          + message)
+    bot.sendMessage(chat, message)
+    connection.close()
+
+
+def myLevel(bot, msg):
+    print("myLevel called")
     connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()
     username = msg['from']['username']
     chat = msg['chat']['id']
-    c.execute("SELECT user, level, experience FROM Levels WHERE chat=? ORDER BY level DESC, experience DESC " , (chat,) )
-    users = c.fetchall()
-    message = "Current status of the levels are:\n" \
-              "User, level, experience\n"
-    for i in users:
-        message+= i[0] + " "
-        message += str(i[1]) + " "
-        message += str(i[2])
-        message += "\n"
-
+    c.execute("SELECT user, level, experience FROM Levels WHERE chat=? AND user =? ORDER BY level DESC, experience DESC ", (chat, username))
+    user = c.fetchone()
+    message = "User, level, experience\n" \
+              "----------------------------\n"
+    message += "{:s} {:5d} {:7d}\n".format(user[0], user[1], user[2])
+    print("Message sent: \n"
+          + message)
     bot.sendMessage(chat, message)
+    connection.close()
 
 
 
