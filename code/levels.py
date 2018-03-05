@@ -63,6 +63,19 @@ def myLevel(bot, msg):
     bot.sendMessage(chat, message)
     connection.close()
 
+def updateChatDatabase(msg):
+    connection = sqlite3.connect(db_dir, check_same_thread=False)
+    c = connection.cursor()
+    c.execute("SELECT chatid FROM Chats WHERE chatid =?", (msg['chat']['id'],))
+    exist = c.fetchone()
+    if not exist:
+        c.execute("INSERT INTO Chats (name, chatid)VALUES (?, ?)", (msg['chat']['title'], msg['chat']['id']))
+    else:
+        if not exist[0] == msg['chat']['title']:
+            c.execute("UPDATE Chats SET name =? WHERE chatid =?", (msg['chat']['title'], msg['chat']['id'] ) )
+
+    connection.commit()
+    connection.close()
 
 
 def main():
@@ -74,6 +87,8 @@ def initializeTable():
     c = connection.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS Levels
             (user text, chat text, level integer, experience integer)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS Chats
+                (name text, chatid text)''')
     connection.commit()
     connection.close()
 
