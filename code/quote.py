@@ -10,7 +10,7 @@ def main():
 
 
 def addToDataBase(bot, msg):
-    print("/addquote was calld")
+    print("/addquote was called")
 
     chat_id = msg['chat']['id']
 
@@ -19,9 +19,9 @@ def addToDataBase(bot, msg):
         c = connection.cursor()
         find = msg['text'].split(" ")[1]
         quote = msg['reply_to_message']['text']
-        username = msg['reply_to_message']['from']['username']
+        userid = msg['reply_to_message']['from']['id']
         try:
-            c.execute("INSERT INTO Quotes(find, quote, username) VALUES (?, ?, ?)", (find, quote, username))
+            c.execute("INSERT INTO Quotes(find, quote, userid) VALUES (?, ?, ?)", (find, quote, userid))
             connection.commit()
             connection.close()
             print("Sent message: \n" + "Quote added succesfully")
@@ -39,7 +39,7 @@ def addToDataBase(bot, msg):
         connection.close()
 
 def findQuote(bot,msg):
-    print("/findquote was calld")
+    print("/findquote was called")
 
     chat_id = msg['chat']['id']
 
@@ -48,10 +48,10 @@ def findQuote(bot,msg):
         t = (msg['text'].split(" ")[1], )
         try:
             c = connection.cursor()
-            c.execute("SELECT * FROM Quotes WHERE find =?", t)
+            c.execute("SELECT quote, user FROM Quotes LEFT OUTER JOIN Users ON Quotes.userid = Users.userid WHERE find =?", t)
             found = c.fetchone()
-            print("Sent message: \n" +  found[1] + "\n-@" + found[2])
-            bot.sendMessage(chat_id, found[1] + "\n-@" + found[2])
+            print("Sent message: \n" +  found[0] + "\n@" + found[1])
+            bot.sendMessage(chat_id, found[0] + "\n@" + found[1])
             connection.close()
         except:
             print("Sent message: \n" + "No such quote found")
@@ -84,7 +84,7 @@ def initializeTable():
     connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS Quotes
-            (find text, quote text, username text)''')
+            (find text, quote text, userid text)''')
     connection.commit()
     connection.close()
 	
