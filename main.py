@@ -191,7 +191,3 @@ if __name__ == "__main__":
                bot.sendMessage(testground, text)
            elif location == "joukkue":
                 bot.sendMessage(joukkue, text)
-
-
-
->>>>>>> 3325f0f79e9f9f3c39d0a186eaad0d3bea2e1a8f
