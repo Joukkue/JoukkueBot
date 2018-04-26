@@ -145,7 +145,7 @@ def udp_server(t_name):
             addr = d[1]
             message = json.loads(reply)
             if  message:
-                bot.sendMessage(target, message)
+                bot.sendMessage(testground, message)
 
         except socket.timeout:
             pass
