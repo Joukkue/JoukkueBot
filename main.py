@@ -1,3 +1,4 @@
+
 #coding: utf-8
 #!usr/bin/python2.7
 from __future__ import print_function, unicode_literals
@@ -24,8 +25,10 @@ def main():
 if sys.argv[1:]:
     print("JoukkueBot started")
     bot = telepot.Bot(joukkueBot) #Do not change
+    target = joukkue
 else:
     bot = telepot.Bot(testBot) #Change this if you need to
+    target = testground
 
 online = 0
 
@@ -63,8 +66,9 @@ def handle(msg):
                 bot.sendMessage(chat_id, 'Tervetuloa norsunluutorniin ' + member + ', voittajien valinta')
         if msg['date'] >= start_time:
             gainExperience(bot, msg)
-            forward_message(msg)
             if content_type == 'text':
+                if str(chat_id) == target:
+                    forward_message(msg)
                 value = compare.Comparing(msg['text'])
                 temp = msg['text'].split(" ")[0].split("@")[0]
                 if value.is_tuli() == True:
@@ -118,8 +122,8 @@ def commandHandler(msg,com):
 
 
 def udp_server(t_name):
-    HOST = ''
-    PORT = 8250
+    HOST = '127.0.0.1'
+    PORT = 8253
 
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -133,6 +137,19 @@ def udp_server(t_name):
     except socket.error as msg:
         print("Bind failed. Error: " + str(msg))
         sys.exit()
+
+    while True:
+        try:
+            d = s.recvfrom(1024)
+            reply = d[0].decode()
+            addr = d[1]
+            message = json.loads(reply)
+            if  message:
+                bot.sendMessage(target, message)
+
+        except socket.timeout:
+            pass
+
 
     print("Socket bind complete")
 
@@ -150,7 +167,7 @@ def forward_message(msg):
 
 
 
-#_thread.start_new_thread(udp_server, ("Server-1",))
+_thread.start_new_thread(udp_server, ("Server-1",))
 
 
 
@@ -177,3 +194,4 @@ if __name__ == "__main__":
 
 
 
+>>>>>>> 3325f0f79e9f9f3c39d0a186eaad0d3bea2e1a8f
