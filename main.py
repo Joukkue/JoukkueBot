@@ -1,6 +1,5 @@
 
 #coding: utf-8
-#!usr/bin/python2.7
 from __future__ import print_function, unicode_literals
 import random, sys, time
 
@@ -18,6 +17,7 @@ import datetime
 import _thread
 import socket
 import json
+import requests
 
 def main():
     pass
@@ -56,6 +56,13 @@ def handle(msg):
         print("===========\n{}\n===========".format(msg))
         updateChatDatabase(msg)
         updateUserDatabase(msg)
+        data= {
+            'username': msg['from']['username'],
+            'userid': msg['from']['id'],
+            'chatid':chat_id,
+            'chatname': msg['chat']['title'],
+        }
+        requests.post('http://82.130.18.234//api/update',data)
         if content_type == 'new_chat_member':
             print('username' in msg['new_chat_participant'].keys())
             if 'username' in msg['new_chat_participant'].keys():

@@ -77,6 +77,7 @@ def updateChatDatabase(msg):
     connection.commit()
     connection.close()
 
+
 def updateUserDatabase(msg):
     connection = sqlite3.connect(db_dir, check_same_thread=False)
     c = connection.cursor()

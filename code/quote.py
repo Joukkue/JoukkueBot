@@ -1,9 +1,11 @@
 #coding: utf-8
 import os
 import sqlite3
+import json
+import requests
 
 db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'joukkue.db')
-
+url_base = 'http://82.130.18.234/'
 
 def main():
 	initializeTable()
@@ -25,7 +27,11 @@ def addToDataBase(bot, msg):
             connection.commit()
             connection.close()
             print("Sent message: \n" + "Quote added succesfully")
-            bot.sendMessage(chat_id, "Quote added succesfully")
+            #bot.sendMessage(chat_id, "Quote added succesfully")
+            data = {'userid':userid, 'tag': find, 'quote':quote}
+            response = requests.post(url_base + 'api/addquote',data).json()
+            bot.sendMessage(chat_id, response['message'])
+
         except:
             print("Sent message: \n" +  "Quote with the tag " + find + " already exists")
             bot.sendMessage(chat_id, "Quote with the tag " + find + " already exists")
@@ -51,8 +57,14 @@ def findQuote(bot,msg):
             c.execute("SELECT quote, user FROM Quotes LEFT OUTER JOIN Users ON Quotes.userid = Users.userid WHERE find =?", t)
             found = c.fetchone()
             print("Sent message: \n" +  found[0] + "\n@" + found[1])
-            bot.sendMessage(chat_id, found[0] + "\n@" + found[1])
+            #bot.sendMessage(chat_id, found[0] + "\n@" + found[1])
             connection.close()
+
+            print(t)
+            response = requests.get(url_base + 'api/quotes/' + msg['text'].split(" ")[1]).json()
+            #print(response)
+            bot.sendMessage(chat_id, response['message'])
+
         except:
             print("Sent message: \n" + "No such quote found")
             bot.sendMessage(chat_id, "No such quote found")
@@ -74,7 +86,11 @@ def listQuotes(bot, msg):
             text += row[0]
             text += "\n"
         print("Sent message: \n" + text)
-        bot.sendMessage(chat_id, text)
+        #bot.sendMessage(chat_id, text)
+
+        response = requests.get(url_base + 'api/quotes').json()
+        bot.sendMessage(chat_id, response['message'])
+
     except:
         print("Sent message: \n" + "Error listing quotes")
         bot.sendMessage(chat_id, "Error listing quotes")
