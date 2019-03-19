@@ -62,7 +62,7 @@ def handle(msg):
             'chatid':chat_id,
             'chatname': msg['chat']['title'],
         }
-        requests.post('http://82.130.18.234//api/update',data)
+        requests.post('http://joukkue.ddns.net/api/update',data)
         if content_type == 'new_chat_member':
             print('username' in msg['new_chat_participant'].keys())
             if 'username' in msg['new_chat_participant'].keys():
@@ -152,7 +152,7 @@ def udp_server(t_name):
             addr = d[1]
             message = json.loads(reply)
             if  message:
-                bot.sendMessage(testground, message)
+                bot.sendMessage(joukkue, message)
 
         except socket.timeout:
             pass

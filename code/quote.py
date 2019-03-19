@@ -5,7 +5,7 @@ import json
 import requests
 
 db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'joukkue.db')
-url_base = 'http://82.130.18.234/'
+url_base = 'http://joukkue.ddns.net/'
 
 def main():
 	initializeTable()
